@@ -11,7 +11,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "fft.js": "^4.0.3"
+    "decibels": "^2.0.0",
+    "fft.js": "^4.0.3",
+    "fourier-transform": "^1.1.2"
   },
   "devDependencies": {
     "konva": "^2.1.3",
