@@ -5,26 +5,26 @@ var LowPass2d=function(global,props={}){
     var self=this;
     this.name="LowPass2d";
     this.addOutputChannel(1);
-    var samplesAmount=500;
-    var weight=0;
-    for(var a=0; a<samplesAmount; a++){
-        weight+=a;
-    }
-    weight=1/weight;
-    console.log("W",weight);
-    if(props.samplesAmount) samplesAmount=props.samplesAmount;
-    
+    var splQ=100;
+
+    if(props.splQ) splQ=props.splQ;
     var last=[];
     this.receive=function(current){
         last.push(current.slice());
-        while(last.length>samplesAmount) last.shift();
+        while(last.length>splQ) last.shift();
+        var totalWeight=0;
         for(var spn in current){
-            self.values[0][spn]=0;
-            for(var t=0; t<samplesAmount; t++){
-                if(last[t])
-                self.values[0][spn] += weight * last[t][spn] / (samplesAmount-t);
+            var dotP=0;
+            var twe=0;
+            for(var t=0; t<splQ; t++){
+                if(last[t]){
+                    var we=splQ-t;
+                    twe += we;
+                    dotP += last[t][spn] * we;
+                }
             }
-            self.values[1][spn] = current[spn] - self.values[0][spn];
+            self.values[0][spn] = dotP/twe;
+            self.values[1][spn] = self.values[0][spn]-current[spn];
         }
         self.output(self.values[0], 0);
         self.output(self.values[1], 0);
