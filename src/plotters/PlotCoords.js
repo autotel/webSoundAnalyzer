@@ -3,6 +3,7 @@ var renderer = undefined;
 function PlotCoords(srcModule, props) {
     Plotbase.call(this);
     var colors = ['red', 'green', 'blue', 'cyan', 'magenta', 'yellow'];
+    if (props.colors) colors = props.colors;
     var colorn = 0;
 
     var maxValue = { x: 0, y: 0 }
@@ -23,8 +24,7 @@ function PlotCoords(srcModule, props) {
     renderer.layer.add(plotterGroup);
     function PointPlot(valFn, props) {
         var varGroup = new Konva.Group();
-        console.log(colorn);
-        colorn++;
+        
         var crossHair = new Konva.Group();
         var linea = new Konva.Line({ 
             points: [-4, 0, 4, 0],
@@ -37,7 +37,8 @@ function PlotCoords(srcModule, props) {
         crossHair.add(linea);
         crossHair.add(lineb);
         var maxText = new Konva.Text({
-            text: '0', align: 'right'
+            text: '0', align: 'right',
+            fill:colors[colorn]
         });
         maxText.offsetY(-18*colorn);
 
@@ -73,6 +74,8 @@ function PlotCoords(srcModule, props) {
             
         }
         this.replot();
+        console.log(colorn);
+        colorn++;
     }
     var plotters = [];
     this.replot = function () {

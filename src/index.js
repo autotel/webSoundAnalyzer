@@ -43,7 +43,10 @@ var handleSuccess = function(stream) {
     var plot4 = new plotters.Plot1D(truncator, { size: { x: 500, y: 200 }, position: { x: 0, y: 600 } });
     var plot5 = new plotters.Plot1D(lpf, { size: { x: 500, y: 200 }, position: { x: 0, y: 800 } });
     var plot6 = new plotters.Plot1D(lpff, { size: { x: 500, y: 200 }, position: { x: 0, y: 1000 } });
-    var plot7 = new plotters.Plot1D(transfind, { size: { x: 500, y: 200 }, position: { x: 0, y: 1200 } });
+    var plot7 = new plotters.Plot1D(transfind, {
+        size: { x: 500, y: 200 }, position: { x: 0, y: 1200 },
+        colors:["red","#CCC","#DDD","#EEE"]
+    });
     var plot8 = new plotters.PlotCoords(transfind, { size: { x: 500, y: 200 }, position: { x: 0, y: 1400 } });
 
     plotters.animQueue.push(plot1.replot);

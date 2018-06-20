@@ -3,6 +3,7 @@ var renderer=undefined;
 function Plot1D(srcModule, props) {
     Plotbase.call(this);
     var colors = ['red', 'green', 'blue', 'cyan', 'magenta', 'yellow'];
+    if(props.colors) colors=props.colors;
     var plotn = 0;
     var position = props.position || { x: 0, y: 0 }
     var size = props.size || { x: 0, y: 0 }
@@ -32,7 +33,7 @@ function Plot1D(srcModule, props) {
             fill: colors[plotn],
         });
         yMinText.offsetY(18 * (plotn + 1));
-        yMaxText.offsetY(18 * (plotn + 1));
+        yMaxText.offsetY(-18 * (plotn + 1));
         xMaxText.offsetY(18*(plotn+1));
 
         group.add(plotLine);
@@ -85,10 +86,10 @@ function Plot1D(srcModule, props) {
             }
             plotLine.points(plotPoints);
 
-            xMaxText.text(dataset.length);
+            xMaxText.text(" "+dataset.length);
             xMinText.text("");
-            yMaxText.text(highestValue);
-            yMinText.text(lowestValue);
+            yMaxText.text(" "+highestValue);
+            yMinText.text(" "+lowestValue);
 
             xMinText.setX(0);
             xMinText.setY(size.y);
