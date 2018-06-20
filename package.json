@@ -13,7 +13,8 @@
   "dependencies": {
     "decibels": "^2.0.0",
     "fft.js": "^4.0.3",
-    "fourier-transform": "^1.1.2"
+    "fourier-transform": "^1.1.2",
+    "onhandlers": "^1.1.1"
   },
   "devDependencies": {
     "konva": "^2.1.3",

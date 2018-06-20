@@ -1,3 +1,4 @@
+var Observable=require('onhandlers');
 var Process=function(){
     var self=this;
     this.values=[[]];
@@ -23,7 +24,6 @@ var Process=function(){
             self.outputs[outputN].add(process);
         }else{
             console.warn("couln't connect "+self.name+" because is not a Process, to", process);
-            
         }
     }
 }

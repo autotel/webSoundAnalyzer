@@ -1,5 +1,6 @@
 const Konva = require('Konva');
 const Plot1D = require('./Plot1D');
+const PlotCoords = require('./PlotCoords');
 var renderer = new (function () {
     var self = this;
     var stage = new Konva.Stage({
@@ -16,9 +17,11 @@ var renderer = new (function () {
 
     anim.start();
 
-    this.Plot1D=Plot1D;
-    Plot1D.setRenderer(this);
+    this.Plot1D = Plot1D;
+    Plot1D.setRenderer(this); 
+    this.PlotCoords = PlotCoords;
+    PlotCoords.setRenderer(this);
 
     return this;
 })();
-module.exports=renderer;
+module.exports = renderer;

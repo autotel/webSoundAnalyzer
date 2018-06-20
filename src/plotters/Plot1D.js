@@ -31,8 +31,10 @@ function Plot1D(srcModule, props) {
             text: '0',
             fill: colors[plotn],
         });
-        yMinText.offsetY(18*(plotn+1));
+        yMinText.offsetY(18 * (plotn + 1));
+        yMaxText.offsetY(18 * (plotn + 1));
         xMaxText.offsetY(18*(plotn+1));
+
         group.add(plotLine);
         group.add(xMaxText);
         group.add(xMinText);
@@ -56,14 +58,19 @@ function Plot1D(srcModule, props) {
             dataset.map(function (a) {
                 if (a != Infinity && a != -Infinity) {
                     if (a > highestValue) {
-                        highestValue = a; console.log(srcModule.name, "grap's new hi", highestValue);
+                        highestValue = a; 
+                        // console.log(srcModule.name, "grap's new hi", highestValue);
                     }
                     if (a < lowestValue) {
-                        lowestValue = a; console.log(srcModule.name, "grap's new lo", lowestValue);
+                        lowestValue = a; 
+                        // console.log(srcModule.name, "grap's new lo", lowestValue);
                     }
                 }
+                
             });
-
+            
+            lowestValue *= 0.99;
+            highestValue *= 0.99;
             var normalizeValue = 1 / (highestValue - lowestValue);
 
             var heightNormalizeValue = size.y / (highestValue - lowestValue);
