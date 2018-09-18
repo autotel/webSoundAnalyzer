@@ -28,11 +28,11 @@ function PlotCoords(srcModule, props) {
         var crossHair = new Konva.Group();
         var linea = new Konva.Line({ 
             points: [-4, 0, 4, 0],
-            stroke:colors[colorn]
+            stroke:colors[colorn],
         });
         var lineb = new Konva.Line({ 
             points: [0, -4, 0, 4],
-            stroke:colors[colorn]
+            stroke:colors[colorn],
         });
         crossHair.add(linea);
         crossHair.add(lineb);
